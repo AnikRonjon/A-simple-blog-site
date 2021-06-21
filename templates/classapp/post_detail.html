@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.slug }}{% endblock %}
+
+
+{% block container %}
+    <h1>{{ post.title }}</h1>
+    <p><code>Created by {{ post.author }} on {{ post.published }}</code></p>
+    <img src="{{ post.image.url }}" alt="">
+    <p>{{ post.body | linebreaks }}</p>
+{% endblock %}

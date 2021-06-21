@@ -27,7 +27,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     body = models.TextField()
-    image = models.ImageField(upload_to='image/%y/%m', unique_for_date=True)
+    image = models.ImageField(upload_to='image/%Y/%m', unique_for_date='published')
 
     def __str__(self):
         return self.title
