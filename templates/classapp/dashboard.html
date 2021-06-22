@@ -9,5 +9,39 @@
         {% endfor %}
     {% endif %}
 
+    <div class="shadow-sm p-3 mb-5 rounded">
+        <p><code>Shailed into this site {{ form.date_joined }}</code></p>
+        <p><code>Last login {{ form.last_login }}</code></p>
+        <p><code>User Name {{ form.username }}</code></p>
+    </div>
+
+
+    <div class="shadow-sm p-3 mb-5 rounded">
+        <h2>Update Your Information</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}<br> <br>
+
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}<br> <br>
+
+            {{ form.email.label_tag }}
+            {{ form.email }}<br><br>
+            <input type="submit" value="Save Changes">
+        </form>
+    </div>
+
+
+    <div class="shadow-sm p-3 mb-5 rounded">
+    <h2>Update password</h2>
+    <form action="" method="post">
+        {% for foo in p_form %}
+            {{ foo.label_tag }}
+            {{ foo }}<br><br>
+        {% endfor %}
+        <input type="submit" value="Update Password">
+    </form>
+    </div>
 
 {% endblock %}

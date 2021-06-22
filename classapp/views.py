@@ -1,9 +1,10 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.list import ListView
-from django.contrib.auth.forms import authenticate, AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, authenticate, AuthenticationForm, UserCreationForm
 from django.contrib import messages
 from .models import Post
+from .forms import UserDashboardForm
 
 
 # Create your views here.
@@ -23,7 +24,22 @@ def PostDetailView(request, year, month, day, post):
 
 def user_dashboard_view(request):
     if request.user.is_authenticated:
-        return render(request, 'classapp/dashboard.html')
+        if request.method == "POST":
+            form = UserDashboardForm(data=request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+        else:
+            form = UserDashboardForm(instance=request.user)
+
+        if request.method == "POST":
+            p_form = PasswordChangeForm(data=request.POST, user=request.user)
+            if p_form.is_valid():
+                p_form.save()
+                update_session_auth_hash(request, p_form.user)
+                return redirect('/dashboard/')
+        else:
+            p_form = PasswordChangeForm(user=request.user)
+        return render(request, 'classapp/dashboard.html', {'form': form, 'p_form': p_form})
     else:
         return redirect('/login/')
 
