@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Login Page{% endblock title %}
+
+{% block container %}
+    <h2>User Login Page</h2>
+    {% if messages %}
+        {% for message in messages %}
+        <p class="alert alert-info">
+                {{ message }}
+        </p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

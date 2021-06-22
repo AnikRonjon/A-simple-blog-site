@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Registration Page{% endblock title %}
+
+{% block container %}
+    <h2>User Registration Page</h2>
+        {% for message in messages %}
+            <p class="alert alert-success alert-dismissible">
+                 {{ message }}&times;
+            </p>
+        {% endfor %}
+    <form action="" method="post" novalidate>
+        {% for form in form %}
+            {{ form.label_tag }}
+            {{ form }}
+            {{ form.errors }}<br><br>
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
