@@ -20,4 +20,8 @@ class Query(graphene.ObjectType):
     all_post = DjangoListField(PostType)
 
 
+class CategoryMutation(graphene.Mutation):
+    pass
+
+
 schema = graphene.Schema(query=Query)
