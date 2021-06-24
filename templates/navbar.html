@@ -2,32 +2,27 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
           </a>
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="{% url 'classapp:post_list' %}" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
                 Home
               </a>
             </li>
             <li>
               <a href="{% url 'classapp:dashboard_redirect' %}" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
                 Dashboard
               </a>
             </li>
           {% if not request.user.is_authenticated %}
               <li>
                   <a href="{% url 'classapp:login_redirect' %}" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
                     login
                   </a>
               </li>
               <li>
                   <a href="{% url 'classapp:registration_redirect' %}" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
                     registration
                   </a>
               </li>
@@ -37,7 +32,6 @@
             {% if request.user.is_authenticated %}
                 <li>
                   <a href="{% url 'classapp:logout_redirect' %}" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
                     logout
                   </a>
                 </li>
@@ -45,9 +39,8 @@
 
 
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
-                Customers
+              <a href=" " class="nav-link text-white">
+                API
               </a>
             </li>
           </ul>
