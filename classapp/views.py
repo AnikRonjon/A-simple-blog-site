@@ -1,5 +1,6 @@
 from django.contrib.auth import login, logout, update_session_auth_hash
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import PasswordChangeForm, authenticate, AuthenticationForm, UserCreationForm
 from django.contrib import messages
@@ -89,4 +90,10 @@ def user_logout_view(request):
         return redirect('/login')
 
 
+class PostView(DetailView):
+    model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_list'] = Post.objects.all()
+        return context
